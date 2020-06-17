@@ -4,6 +4,13 @@ Class Period: 10
 
 Throughout this project, I would like to make changes to some of the pre-existing features of MDL. Once this is completed, I hope to add new features as well to the engine. Here is a tentative list.
 
+# Current Version:
+* Cone shape was added.
+* Mesh for objects is currently in progress.
+
+
+# Tentative Plan (Not all features were added.)
+
 # Pre-existing Features:
 * set: Assigning a value to a knob.
 * tween: Producing an animation by going through knob lists.
