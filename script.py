@@ -156,7 +156,11 @@ def run(filename):
             args = command['args']
             knob_value = 1
 
-            if c == 'box':
+            if c == 'cone':
+                if command['constants']:
+                    reflect = command['constants']
+                #Will add creation of cone in here.
+            elif c == 'box':
                 if command['constants']:
                     reflect = command['constants']
                 add_box(tmp,

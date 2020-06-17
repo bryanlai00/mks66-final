@@ -263,6 +263,28 @@ def generate_torus( cx, cy, cz, r0, r1, step ):
             points.append([x, y, z])
     return points
 
+#Note: Cone follows a similar procedure to that of the torus.
+
+def add_cone(polygons, cx, cy, cz, r, height, step):
+    points = generate_cone(cx, cy, cz, r, height, step)
+    i = 1
+    while(i < len(points)):
+        #Adds the base generated.
+        add_polygon(polygons,cx, cy, cz, points[i-1][0], points[i-1][1], points[i-1][2],
+                         points[i][0], points[i][1], points[i][2] )
+        #Adds the lines that connect the vertice and each point of the base.
+        add_polygon(polygons, cx, cy + height, cz, points[i][0], points[i][1], points[i][2],
+                         points[i - 1][0], points[i - 1][1], points[i - 1][2] )
+        i += 1
+    #At this point i = len(points), thus we connect the last point with the first created in the while loop.
+    add_polygon(polygons,cx, cy, cz, points[i-1][0], points[i-1][1], points[i-1][2], points[0][0], points[0][1], points[0][2] )
+    add_polygon(polygons, cx, cy + height, cz, points[i - 1][0], points[i- 1][1], points[i - 1][2], points[0][0], points[0][1], points[0][2] )
+
+#Returns points of the cone to be used later when adding it into the list of polygons.
+def generate_cone(cx, cy, cz, r, height, step):
+    points = []
+
+
 
 def add_circle( points, cx, cy, cz, r, step ):
     x0 = r + cx
