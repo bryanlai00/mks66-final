@@ -2,6 +2,50 @@ from display import *
 from matrix import *
 from gmath import *
 
+#Example of .obj file format:
+#v -1.929448 11.409631 -5.221873
+#f 766 765 768 767
+def add_mesh(polygons, filename):
+    #Read file in object directory to start writing points for the polygon.
+    file = open('obj/' + filename, 'r')
+    lines = file.readlines()
+    #Create separate arrays for vertices and faces based on each line.
+    vertices = []
+    faces = []
+    for line in lines:
+        #Only care about lines that have values.
+        if(len(line) > 0):
+            values = line.split()
+            #If line is for adding vertices...
+            if values[0] == "v":
+                #This if for triangles
+                if(len(values) == 4):
+                    vertices.append(float(values[1]), float(values[2]), float(values[3]), 1.0)
+                #This is for quadrilaterals (1 arg extra.)
+                if(len(values) == 5):
+                    vertices.append(float(values[1]), float(values[2]), float(values[3]), float(values[4]))
+            #If line is for adding faces...
+            if values[0] == "f":
+                #This is for triangles..
+                if(len(values) == 4):
+                    v0 = int(points[1].split("/")[0])
+                    v1 = int(points[2].split("/")[0])
+                    v2 = int(points[3].split("/")[0])
+                    faces.append([v0, v1, v2])
+                #For quadrilaterals!
+                if(len(values) == 5):
+                    v0 = int(points[1].split("/")[0])
+                    v1 = int(points[2].split("/")[0])
+                    v2 = int(points[3].split("/")[0])
+                    v3 = int(points[4].split("/")[0])
+                    faces.append([v0, v1, v2, v3])
+
+    #At this point, we should have filled arrays for vertices and faces, time to add_polygon.
+    for f in faces:
+        add_polygon(polygons, vertices[f[0]-1][0], vertices[f[0]-1][1], vertices[f[0]-1][2], vertices[f[1]-1][0], vertices[f[1]-1][1], vertices[f[1]-1][2],
+                              vertices[f[2]-1][0], vertices[f[2]-1][1], vertices[f[2]-1][2])
+
+
 def draw_scanline(x0, z0, x1, z1, y, screen, zbuffer, color):
     if x0 > x1:
         tx = x0
