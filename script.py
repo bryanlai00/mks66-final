@@ -156,11 +156,7 @@ def run(filename):
             args = command['args']
             knob_value = 1
 
-            if c == 'cone':
-                if command['constants']:
-                    reflect = command['constants']
-                #Will add creation of cone in here.
-            elif c == 'box':
+            if c == 'box':
                 if command['constants']:
                     reflect = command['constants']
                 add_box(tmp,
@@ -186,6 +182,15 @@ def run(filename):
                           args[0], args[1], args[2], args[3], args[4], step_3d)
                 matrix_mult( stack[-1], tmp )
                 draw_polygons(tmp, screen, zbuffer, view, ambient, light, symbols, reflect)
+                tmp = []
+                reflect = '.white'
+            #Added cone, same as torus args.
+            elif c == 'cone':
+                if command['constants']:
+                    reflect = command['constants']
+                add_cone(tmp, args[0], args[1], args[2], args[3], args[4], step_3d)
+                matrix_mult( stack[-1], tmp)
+                draw_polygons(tmp, screen, zbuffer, view, ambient, lights, symbols, reflect)
                 tmp = []
                 reflect = '.white'
             elif c == 'line':

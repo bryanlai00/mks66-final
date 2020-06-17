@@ -283,9 +283,17 @@ def add_cone(polygons, cx, cy, cz, r, height, step):
 #Returns points of the cone to be used later when adding it into the list of polygons.
 def generate_cone(cx, cy, cz, r, height, step):
     points = []
+    rot_start = 0
+    rot_stop = step
+    #Note used from torus.
+    #circ_start = 0
+    #circ_stop = step
+    for rotation in range(rot_start, rot_stop):
+        rot = rotation/float(step)
+        x = r * math.cos(2 * math.pi * rot) + cx
+        z = r * math.sin(2 * math.pi * rot) + cz
+        points.append([x,cy,z])
     return points
-
-
 
 def add_circle( points, cx, cy, cz, r, step ):
     x0 = r + cx
