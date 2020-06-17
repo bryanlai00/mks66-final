@@ -5,8 +5,8 @@ Class Period: 10
 Throughout this project, I would like to make changes to some of the pre-existing features of MDL. Once this is completed, I hope to add new features as well to the engine. Here is a tentative list.
 
 # Current Version:
-* Cone shape was added.
-* Mesh for objects is currently in progress.
+* Cone shape was added!
+* Mesh for objects has been added. (e.g. mesh skyscraper) where skyscraper.obj exists in obj/
 
 
 # Tentative Plan (Not all features were added.)
