@@ -283,6 +283,7 @@ def add_cone(polygons, cx, cy, cz, r, height, step):
 #Returns points of the cone to be used later when adding it into the list of polygons.
 def generate_cone(cx, cy, cz, r, height, step):
     points = []
+    return points
 
 
 
