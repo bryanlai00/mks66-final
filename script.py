@@ -191,7 +191,7 @@ def run(filename):
                     reflect = command['constants']
                 add_cone(tmp, args[0], args[1], args[2], args[3], args[4], step_3d)
                 matrix_mult( stack[-1], tmp)
-                draw_polygons(tmp, screen, zbuffer, view, ambient, lights, symbols, reflect)
+                draw_polygons(tmp, screen, zbuffer, view, ambient, light, symbols, reflect)
                 tmp = []
                 reflect = '.white'
             elif c == 'mesh':
@@ -200,7 +200,7 @@ def run(filename):
                 #Note you DO NOT need to add .obj to the end of the file when writing in MDL file.
                 add_mesh(tmp, args[0] + ".obj")
                 matrix_mult( stack[-1], tmp )
-                draw_polygons(tmp, screen, zbuffer, view, ambient, lights, symbols, reflect)
+                draw_polygons(tmp, screen, zbuffer, view, ambient, light, symbols, reflect)
                 tmp = []
                 reflect = '.white'
             elif c == 'line':
