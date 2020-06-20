@@ -1,2 +1,7 @@
-cone 0 0 0 50 50
-save cone.png
+push
+scale 10 10 10
+move 30 27 0
+mesh :teddy
+pop
+cone 280 430 80 80 80
+save project.png
